@@ -1,6 +1,9 @@
 package org.alfonso.nextraining.controllers;
 
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
 import org.alfonso.nextraining.models.Persona;
 import org.alfonso.nextraining.services.PersonaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +21,14 @@ class HolaMundoController {
         return "Hola " + nombre;
     }
 
-    // @GetMapping("/personas/")
-    // devuelva toda la lista de personas
+    @GetMapping("/personas/")
+    public List<Persona> getPersonas() {
+        return personaService.getPersonas();
+    }
 
     @GetMapping("/persona/{nombre}")
     public Persona getPersona(@PathVariable String nombre) {
-        System.out.println(personaService.getPersonas().size() + " personas hay en el servicio");
+        // System.out.println(personaService.getPersonas().size() + " personas hay en el servicio");
 
         Persona result = null;
 
@@ -40,7 +45,7 @@ class HolaMundoController {
     public Persona addPersona(@PathVariable String nombre, @PathVariable Integer edad ) {
         Persona nuevaPersona = new Persona(nombre, edad);
         // añadir a la persona a la lista
-
+        personaService.addPersona(nuevaPersona);
         return nuevaPersona;
     }
 

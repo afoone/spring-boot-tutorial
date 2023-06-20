@@ -28,8 +28,14 @@ public class PersonaService {
     }
 
     // método que añada una persona a la lista
+    public void addPersona(Persona persona) {
+        personas.add(persona);
+    }
 
-    // medotod que borra una persona de la lista
+    // medoto que borra una persona de la lista
+    public void borraPersona(Persona persona) {
+        personas.remove(persona);
+    }
 
 
 }
