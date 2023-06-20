@@ -1,5 +1,10 @@
 package org.alfonso.nextraining.models;
 
+/**
+ *  Clase Persona
+ *  @version 1.0
+ *  POJO (Plain Old Java Object)
+ */
 public class Persona {
     private String nombre;
     private Integer edad; // Wrapper class int -> Integer
@@ -7,6 +12,10 @@ public class Persona {
     public Persona(String nombre, Integer edad) {
         this.nombre = nombre;
         this.edad = edad;
+    }
+
+    public boolean esMayorDeEdad() {
+        return this.edad >= 18;
     }
 
     // Getters
@@ -26,5 +35,5 @@ public class Persona {
     public void setEdad(Integer edad) {
         this.edad = edad;
     }
-    
+
 }
