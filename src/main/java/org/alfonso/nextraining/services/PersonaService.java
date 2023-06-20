@@ -29,5 +29,7 @@ public class PersonaService {
 
     // método que añada una persona a la lista
 
+    // medotod que borra una persona de la lista
+
 
 }
