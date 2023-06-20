@@ -9,20 +9,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MainController {
 
-    @Autowired
-    PersonaService personaService;
 
-    @GetMapping("/")
+
+    @GetMapping("/home")
     public String home(Model model) {
         model.addAttribute("message", "Soy el mensaje desde el inframundo de los controladores");
         return "home";
     }
 
-    @GetMapping("/personas")
-    public String getPersonas(Model model) {
-        model.addAttribute("items", personaService.getPersonas());
-        return "personas";
+    @GetMapping("/")
+    public String index() {
+        return "redirect:/home";
     }
+
+
 
 
 }
