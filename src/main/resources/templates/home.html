@@ -10,6 +10,9 @@
         <h1>
             Bienvenidos a el maravilloso mundo de Spring Boot
         </h1>
-        <p th:text="${message}"></p>
+        <div th:replace="content :: main-section">
+            <p th:text="${message}"></p>
+        </div>
+
     </body>
 </html>

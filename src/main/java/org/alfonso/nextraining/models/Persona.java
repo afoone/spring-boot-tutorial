@@ -14,6 +14,10 @@ public class Persona {
         this.edad = edad;
     }
 
+    // Constructor vacío
+    public Persona() {
+    }
+
     public boolean esMayorDeEdad() {
         return this.edad >= 18;
     }
