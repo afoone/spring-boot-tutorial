@@ -1,12 +1,15 @@
 package org.alfonso.nextraining.entities;
 
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 import java.util.List;
 
+import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 
@@ -34,7 +37,9 @@ public class Persona {
     @Column(name = "age", nullable = false)
     private Integer edad; // Wrapper class int -> Integer
 
-    @OneToMany(mappedBy = "persona")
+    // @OneToMany(mappedBy = "persona")
+    @ElementCollection
+    @CollectionTable(name = "telefonos", joinColumns = @JoinColumn(name = "person_id"))
     private List<Telefono> telefonos;
 
 
@@ -54,7 +59,25 @@ public class Persona {
     public String getApellido2() {
         return apellido2;
     }
+
     
+    
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public List<Telefono> getTelefonos() {
+        return telefonos;
+    }
+
+    public void setTelefonos(List<Telefono> telefonos) {
+        this.telefonos = telefonos;
+    }
+
     // Setters
     public void setNombre(String nombre) {
         this.nombre = nombre;

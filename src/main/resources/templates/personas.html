@@ -10,6 +10,9 @@
     <h1>Personas</h1>
     <ul>
         <li th:each="item : ${items}" th:text="${item.nombre + ' de edad ' + item.edad }"></li>
+        <!-- <ul>
+            <li th:each="telefono : ${item.getTelefonos()?}" th:text="${telefono.numero}"></li>
+        </ul> -->
     </ul>
 
     <a href="/personas/create">

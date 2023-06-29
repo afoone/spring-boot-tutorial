@@ -21,12 +21,19 @@ public class PersonaController {
     PersonaService personaService;
 
     @GetMapping("")
-    public String getPersonas(@RequestParam String name, Model model) {
+    public String getPersonas(@RequestParam(required = false) String name, Model model) {
         System.out.println("El nombre es: " + name);
         if (name == null || name.equals("")) {
-            model.addAttribute("items", personaService.getPersonas());
+            Iterable<Persona> personas = personaService.getPersonas();
+            for (Persona persona : personas) {
+                System.out.println(persona);
+                System.out.println(persona.getTelefonos());
+            }
+            model.addAttribute("items", personas);
             return "personas";
         }
+
+        System.out.println("El nombre es: " + personaService.getPersonasByNombre(name));
         model.addAttribute("items", personaService.getPersonasByNombre(name));
         return "personas";
     }
