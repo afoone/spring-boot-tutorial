@@ -1,43 +1,36 @@
 package org.alfonso.nextraining.services;
 
-import java.util.ArrayList;
-import java.util.List;
 
-import org.alfonso.nextraining.models.Persona;
+import org.alfonso.nextraining.entities.Persona;
+import org.alfonso.nextraining.repositories.PersonaRepository;
+import org.hibernate.PropertyValueException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class PersonaService {
 
-    private List<Persona> personas;
+    @Autowired
+    private PersonaRepository personaRepository;
 
-    private int contador = 0;
-
-    public PersonaService() {
-        personas = new ArrayList<>();
-        personas.add(new Persona("pepito", 48));
-        personas.add(new Persona("juanito", 18));
-        personas.add(new Persona("menganito", 17));
-        personas.add(new Persona("fulanito", 16));
-        personas.add(new Persona("juanita", 56));
-        personas.add(new Persona("menganita", 17));
-        personas.add(new Persona("fulanita", 16));
-    }
 
     // accessors
-    public List<Persona> getPersonas() {
-        contador++;
-        return personas;
+    public Iterable<Persona> getPersonas() {
+        return personaRepository.findAll();
     }
 
     // método que añada una persona a la lista
     public void addPersona(Persona persona) {
-        personas.add(persona);
+        try {
+            personaRepository.save(persona);
+        } catch (Exception e) {
+            System.out.println("Error al guardar la persona: ".concat(e.getMessage()));
+        }
     }
 
     // medoto que borra una persona de la lista
     public void borraPersona(Persona persona) {
-        personas.remove(persona);
+        // personas.remove(persona);
     }
 
 

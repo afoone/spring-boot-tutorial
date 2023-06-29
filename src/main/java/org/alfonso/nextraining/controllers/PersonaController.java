@@ -1,6 +1,6 @@
 package org.alfonso.nextraining.controllers;
 
-import org.alfonso.nextraining.models.Persona;
+import org.alfonso.nextraining.entities.Persona;
 import org.alfonso.nextraining.services.PersonaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,6 +27,7 @@ public class PersonaController {
 
     @PostMapping("")
     public String addPersona(@ModelAttribute Persona persona) {
+        persona.setApellido1("desconocido");
         personaService.addPersona(persona);
         return "redirect:/personas";
     }
