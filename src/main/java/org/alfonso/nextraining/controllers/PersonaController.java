@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
@@ -20,14 +21,19 @@ public class PersonaController {
     PersonaService personaService;
 
     @GetMapping("")
-    public String getPersonas(Model model) {
-        model.addAttribute("items", personaService.getPersonas());
+    public String getPersonas(@RequestParam String name, Model model) {
+        System.out.println("El nombre es: " + name);
+        if (name == null || name.equals("")) {
+            model.addAttribute("items", personaService.getPersonas());
+            return "personas";
+        }
+        model.addAttribute("items", personaService.getPersonasByNombre(name));
         return "personas";
     }
 
     @PostMapping("")
     public String addPersona(@ModelAttribute Persona persona) {
-        persona.setApellido1("desconocido");
+        // persona.setApellido1("desconocido");
         personaService.addPersona(persona);
         return "redirect:/personas";
     }
