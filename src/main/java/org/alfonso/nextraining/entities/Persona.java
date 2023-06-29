@@ -72,4 +72,11 @@ public class Persona {
         this.apellido2 = apellido2;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Persona { id: ").append(id).append(", nombre: ").append(nombre).append(", apellido1: ").append(apellido1).append(", apellido2: ").append(apellido2).append(", edad: ").append(edad).append(" }");
+        return sb.toString();
+    }
+
 }

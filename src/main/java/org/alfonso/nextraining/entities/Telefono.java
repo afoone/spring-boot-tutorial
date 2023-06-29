@@ -22,5 +22,22 @@ public class Telefono {
     @ManyToOne
     @JoinColumn(name = "person_id")
     private Persona persona;
+
+    // Getters
+    public String getNumero() {
+        return numero;
+    }
+
+    // Setters
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    // toString
+    @Override
+    public String toString() {
+        return "Telefono [id=" + id + ", numero=" + numero + "]";
+    }
+    
     
 }

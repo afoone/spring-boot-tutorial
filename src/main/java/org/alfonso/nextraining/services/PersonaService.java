@@ -30,6 +30,10 @@ public class PersonaService {
         }
     }
 
+    public Persona getPersona(Long id) {
+        return personaRepository.findById(id).orElse(null);
+    }
+
     // medoto que borra una persona de la lista
     public void borraPersona(Persona persona) {
         // personas.remove(persona);
