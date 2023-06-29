@@ -11,6 +11,8 @@ public class PersonaService {
 
     private List<Persona> personas;
 
+    private int contador = 0;
+
     public PersonaService() {
         personas = new ArrayList<>();
         personas.add(new Persona("pepito", 48));
@@ -24,6 +26,7 @@ public class PersonaService {
 
     // accessors
     public List<Persona> getPersonas() {
+        contador++;
         return personas;
     }
 
