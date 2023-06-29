@@ -1,7 +1,11 @@
 package org.alfonso.nextraining.entities;
 
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -29,6 +33,9 @@ public class Persona {
 
     @Column(name = "age", nullable = false)
     private Integer edad; // Wrapper class int -> Integer
+
+    @OneToMany(mappedBy = "persona")
+    private List<Telefono> telefonos;
 
 
     // Getters
