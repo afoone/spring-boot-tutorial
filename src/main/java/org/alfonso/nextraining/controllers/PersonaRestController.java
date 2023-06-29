@@ -1,6 +1,7 @@
 package org.alfonso.nextraining.controllers;
 
 import org.alfonso.nextraining.entities.Persona;
+import org.alfonso.nextraining.exceptions.NextrainingException;
 import org.alfonso.nextraining.services.PersonaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,7 +30,7 @@ public class PersonaRestController {
     }
 
     @PostMapping("/")
-    public void addPersona(@RequestBody Persona persona) {
+    public void addPersona(@RequestBody Persona persona) throws NextrainingException {
         System.out.println("Persona recibida: " + persona);
         personaService.addPersona(persona);
     }
